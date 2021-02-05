@@ -1,0 +1,60 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2020-10-29T10:06:07+09:00
+
+====== 29 ======
+Created 목요일 29 10월 2020
+
+
+-> 무엇에 대한 설명?
+* clinet-server chatting (networking)
+* docker compse (web + db)
+* git docker 자동배포(git hooking)
+* html form(with file upload)
+* ajax (js, jquery)
+
+-> 강사님이 만들어놓으신 프로젝트 clone
+git clone https://github.com/poby13/flaskproject
+
+-> 강사님의 임의적으로 만들어놓으신 이미지
+docker pull poby13/flask-started
+
+-> 강사님이 올리실때 경로 잘못 올리신 경로라서 수정해야함
+-> poby13 추가
+docker-compose.yml 수정
+
+-> 무슨 명령어?
+docker-compose up -d
+
+
+code . <- visual studio 열기
+
+-> 해당 이미지를 임의적으로 실행하는것 같음
+-> 컨테이너 생성방식으로 안되고 bash 방식으로 되는 이미지가 몇개 있던게 구분을 모르겠음
+docker run -it python bash
+
+-> 파이썬 제대로 접속되었는지 버전 확인
+python3 --version
+
+-> pip list 초기환경 확인
+pip list
+
+-> 플라스크, 마리아 디비 pip 설치
+pip install flask
+pip install mariadb
+pip install gunicorn
+
+-> pip 인스톨 한 목록 보기
+pip freeze
+
+-> pip install 목록을 requirements.txt에 목록으로 작성
+pip freeze > requirements.txt
+
+-> 해당 이미지 빌드
+docker build -t myflask .
+
+-> 해당 컨테이너 실행
+docker run -dp 5000:5000 myflask
+
+
+

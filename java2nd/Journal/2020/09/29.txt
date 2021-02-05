@@ -1,0 +1,292 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2020-09-29T09:26:38+09:00
+
+====== 29 ======
+Created 화요일 29 9월 2020
+
+2020년 9월 29일
+
+WSGI Gunicore 서버 + Flask 앱
+
+1. 우분투 서버 설정
+
+패키지 업데이트
+sudo apt update && sudo apt upgrade -y
+
+2. 우분투 플라스크 설치 문서 내용을 진행
+참고문서: https://www.digitalocean.com/community/tutorials/how-to-serve-flask-applications-with-gunicorn-and-nginx-on-ubuntu-18-04
+
+Step1
+업데이트는 이미 진행 했으므로 아래 명령으로 파이썬 가상환경 설정을 위한 패키지를 설치
+sudo apt install python3-pip python3-dev build-essential libssl-dev libffi-dev python3-setuptools -y
+
+Step2 가상환경 만들기
+sudo apt install python3-venv
+mkdir ~/flask_proj
+cd ~/flask_proj
+pwd
+python3 --version
+python3 -m venv myvenv
+source myvenv/bin/activate
+
+Step3
+pip list
+pip install wheel
+pip install gunicorn flask
+
+샘플 앱
+~/flask_proj/main.py
+
+from flask import Flask
+app = Flask(__name__)
+
+@app.route("/")
+def hello():
+	return "<h1 style='color:blue'>헬로</h1>"
+
+if __name__ == "__main__":
+	app.run(host='0.0.0.0')
+
+=== 비쥬얼스튜디오 코드로 만들듭시다. ===
+
+python main.py
+
+WSGI 파일 생성
+
+~/flask_proj/wsgi.py
+
+from main import app
+
+if __name__ == "__main__":
+	app.run()
+
+Step 4 Gunicorn 설정
+
+
+가상환경 종료
+deactivate
+
+--------------------
+
+참고. 우분투에서 사용자 추가 및 sugo 그룹 추가
+https://phoenixnap.com/kb/how-to-create-sudo-user-on-ubuntu
+문서의 step2
+sudo usermod -aG sudo <아이디>
+
+
+마리아디비 
+
+참고문서:
+https://www.digitalocean.com/community/tutorials/how-to-install-mariadb-on-ubuntu-20-04
+
+스텝1에 설치
+
+sudo apt install mariadb-server
+sudo service mysql start
+
+
+데몬 상태확인
+sudo service <서비스명> status
+sudo service <서비스명> start
+sudo service <서비스명> stop
+sudo service <서비스명> restart
+sudo systemctl status <서비스명>
+sudo systemctl start <서비스명>
+sudo systemctl stop <서비스명>
+sudo systemctl restart <서비스명>
+
+스템2
+주의! 마리아디비가 활성 상태에서 진행합니다.
+
+sudo mysql_secure_installation
+질문1: 우분투 로그인 비번을 입력
+질문2: 마리아디비 root의 비번 변경을 묻는 경우 Y => 비번입력(쉬운것으로)
+질문3: Y
+질문4: Y (원격으로 root 사용자 접근은 막아 두는 것을 권장!)
+질문5: Y
+질문6: Y
+
+스템3 데이터베이스 관리 작업을 위한 사용자를 추가한다.
+
+sudo mariadb
+GRANT ALL ON *.* TO '<아이디>'@'localhost' IDENTIFIED BY 'password' WITH GRANT OPTION;
+대소문자 가리지 않음.
+*.* (모든)데이터베이스.(모든)테이블 | test_db.* test_db.member
+admin은 디비 사용자로 추가할 아이디
+localhost는 접근 장비 주소를 의미하며 같은 장비 내에서 사용이 가능하다는 의미
+password에 따라 권한을 달리할 수 있음.
+GRANT 옵션을 데이터베이스 명령어에 대한 권한을 지정
+; 로 끝난다.
+
+FLUSH PRIVILEGES;
+exit
+
+
+마리아디비 다루기
+
+참고문서:
+https://www.guru99.com/mariadb-tutorial-install.html
+
+show databases;
+use mysql;
+show tables;
+desc user;
+select Host, User, Password from user;
+
+Create a Database and Tables
+
+테이블 생성
+-- 테이블 순서는 관계를 고려하여 한 번에 실행해도 에러가 발생하지 않게 정렬되었습니다.
+
+-- reporter Table Create SQL
+CREATE TABLE reporter
+(
+	`r_id`       INT            NOT NULL    AUTO_INCREMENT COMMENT '아이디', 
+	`nick_name`  VARCHAR(20)    NOT NULL        COMMENT '이름', 
+	`part`       VARCHAR(20)    NULL        COMMENT '소속', 
+	`reg_date`   TIMESTAMP      NULL   DEFAULT current_timestamp()     COMMENT '가입일', 
+	`email`      VARCHAR(45)    NULL        COMMENT '이메일', 
+	`phone`      VARCHAR(11)    NOT NULL        COMMENT '연락처', 
+	PRIMARY KEY (r_id)
+);
+
+ALTER TABLE reporter COMMENT '기자';
+
+
+-- reporter Table Create SQL
+CREATE TABLE post
+(
+	`p_id`      INT              NOT NULL    AUTO_INCREMENT COMMENT '아이디', 
+	`title`     VARCHAR(45)      NOT NULL        COMMENT '제목', 
+	`content`   VARCHAR(2000)    NULL        COMMENT '내용', 
+	`reporter`  INT              NOT NULL        COMMENT '기자', 
+	`reg_date`  TIMESTAMP        NULL DEFAULT current_timestamp()       COMMENT '작성일', 
+	`pub_date`  DATETIME         NULL        COMMENT '배포일', 
+	PRIMARY KEY (p_id)
+);
+
+ALTER TABLE post COMMENT '기사';
+
+ALTER TABLE post
+	ADD CONSTRAINT FK_post_reporter_reporter_r_id FOREIGN KEY (reporter)
+		REFERENCES reporter (r_id) ON DELETE RESTRICT ON UPDATE RESTRICT;
+
+참조 테이블 동작
+1. CASCADE : 참조되는 테이블에서 데이터를 삭제하거나 수정하면, 참조하는 테이블에서도 삭제와 수정이 같이 이루어집니다.
+2. SET NULL : 참조되는 테이블에서 데이터를 삭제하거나 수정하면, 참조하는 테이블의 데이터는 NULL로 변경됩니다.
+3. NO ACTION : 참조되는 테이블에서 데이터를 삭제하거나 수정해도, 참조하는 테이블의 데이터는 변경되지 않습니다.
+4. SET DEFAULT : 참조되는 테이블에서 데이터를 삭제하거나 수정하면, 참조하는 테이블의 데이터는 필드의 기본값으로 설정됩니다.
+5. RESTRICT : 참조하는 테이블에 데이터가 남아 있으면, 참조되는 테이블의 데이터를 삭제하거나 수정할 수 없습니다.
+
+SQL문 예제
+desc reporter;
+
+
+USE flask_db;
+USE mysql;
+SHOW TABLES;
+
+추가 구문
+INSERT INTO tableName
+(column_1, column_2, ... )  
+VALUES  
+(value1, value2, ... ),  
+(value1, value2, ... ),  
+...; 
+INSERT INTO reporter (nick_name, phone) VALUES (“홍길동”, “01011112222”);
+참고. 컬럼이 일치하는 경우 VALUES만 작성할 수 있다.
+
+INSERT INTO reporter (nick_name, phone) 
+VALUES ("이순신", "01011112222"),
+("안중근", "01011112222"),
+("유관순", "01011112222"),
+("신사임당", "01011112222");
+
+수정 구문
+UPDATE tableName SET field=newValue, field2=newValue2,...  
+[WHERE ...]  
+
+UPDATE reporter SET nick_name=”세종대왕”, phone=”01044445555”
+WHERE r_id=2;
+
+select * from reporter AS r where r.r_id = 2;
+select * from reporter where reporter.r_id = 2;
+
+UPDATE reporter r SET nick_name="세종대왕", phone="01044445555"
+where r.r_id = 2;
+
+select * from reporter r;
+
+UPDATE reporter r set part = "영업부" where r.r_id = 2;
+
+
+삭제 구문
+DELETE FROM tableName  
+[WHERE condition(s)]  
+[ORDER BY exp [ ASC | DESC ]]  
+[LIMIT numberRows];
+
+DELETE FROM reporter 
+limit 2;
+
+
+SELECT *   
+FROM reporter r 
+WHERE r_id > 8 AND r_id < 14;
+
+SELECT *   
+FROM reporter r 
+WHERE r_id > 14 OR r_id < 8;
+ 
+Like 구문
+
+SELECT field_1, field_2,... FROM tableName1, tableName2,...  
+WHERE fieldName LIKE condition;
+
+# 메일 주소가 nate.com인 사람은?
+select nick_name, email from reporter r where r.email like '%nate.com';
+# 핸드폰 번호에 512가 포함된 사람은?
+select nick_name, phone from reporter r where r.phone like '%512%';
+# 이메일이 1<한개문자>@을 포함된 사람은?
+select nick_name, email from reporter r where r.email like '%1_@%';
+
+정렬하기
+
+SELECT expression(s)  
+FROM tables  
+[WHERE condition(s)]  
+ORDER BY exp [ ASC | DESC ];  
+
+select * from reporter r order by part, phone;
+
+중복없이 결과(중복 생략)
+
+select DISTINCT phone from reporter r where phone like '%2222';
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

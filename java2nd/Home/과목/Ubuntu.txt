@@ -1,0 +1,481 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2020-09-11T11:12:33+09:00
+
+리눅스 - 우분투 - 개인공부
+
+우분투 vs 센트os 차이점
+- 리눅스를 사용하는 os
+- 우분투가 무겁고, 센트os는 가벼워서 가벼운 웹서비스 포팅같은것들은 센트os를 주로 사용하고, 약간 무거운 것들은 우분투가 대세
+- 두종류 다 많이 사용하며, 사용방법은 많이 비슷하니 초반에 공부할때는 둘 중에 아무거나 해도 되고, 좀 무겁다는 우분투로 공부 시작.
+- 우분투, 센트os, 레드햇 등의 종류가 있는데 레드햇은 요즘에 잘 안쓰는거 같음
+( 12년도에는 레드햇 주로 썻다고 들은거 같은데??? )
+
+가상머신 설치 - 호스트 os
+		  - 게스트 os 구분됨.
+		  - 리눅스 64 bit 3대, 윈도우 10 32 bit - 설치
+				
+스냅숏 - 윈도우 시점 복원
+Suspend - 이어하기( 게스트os 유지상태로 vmware만 종료 ) - 이 상태로는 하드웨어 추가/제거 불가능
+
+--------------------
+vm 호스트 os - 111.1 ( 게이트웨이 111단 )
+게이트웨이 겸 DNS서버 - 2
+서버 1 - 고정 ip - 100
+서버 2 - 고정 ip - 200
+dhcp 서버 - 254
+클라이언트 - 유동 ip ( DHCP )
+win클라이언트 - 유동 ip ( DHCP )
+
+-> 인터넷 -               공유기              -   vm 호스트 os  (192.168.111.1)   -    vm 가상화 머신들
+				  (게이트웨이 192.168.0.1) - (게이트웨이 - 192.168.111.2 )      -    (192.168.111.~~~~ )
+
+-> 홈네트워크 VM ware구조 ( 공유기 - vm 가상 호스트 os의 2중 게이트웨이 구조)
+--------------------
+
+리눅스
+- 기존의 서버에서는 유닉스가 주로 사용되었고, 유닉스의 작은버전인 미닉스보다 좋은 운영체제를 만들자! 라는 생각에 리누스 토발즈가 만든 운영체제
+- 리누스 토발즈는 리눅스의 커널만 만들어서 배포하였고, 프리웨어로 배포하면서 추후에 여러 프로젝트로 개발되면서 현재의 리눅스가 됨
+
+GNU 프로젝트
+
+우분투 - 우분투 데스크톱 - gui 제공 (XWindow)
+		 - 우분투 서버       - gui 미제공
+
+
+Server 설치 (데스크탑 모드 gui 포함)
+--------------------
+
+ubuntu 사용자 - ubuntu/ubuntu
+루트 사용자 - password
+
+설정 1. 해상도 변경
+	  2. sudo su - root - 루트 사용자 접속
+	  3. passwd - 루트사용자 비밀번호 입력 - password
+	  4. 계정 잠금해제
+	  5. 자동로그인 켬 설정
+	  6. 업데이트 끄기
+
+gedit /etc/lightdm/lightdm.conf - ubuntu -> root
+gedit /root/.profile - 제일 아랫줄 # 으로 주석
+reboot - 재부팅
+
+/etc/apt/sources.list -> 강의자가 편집해서 따로 파일 올려놓은거 받기위해 기존 파일 .bak으로 이름변경 후
+wget 다운로드 주소 - 해당 주소의 파일 다운로드 받음
+
+wget http://download.hanbit.co.kr/ubuntu/16.04/sources.list
+-> 위 이름 변경 후 강의자가 편집해 놓은것 받음 (4장 내용)
+apt-get update -> sources.list 업데이트 -> 강의자가 우분투가 따로 업데이트되더라도 0.4버전으로 돌리기위해 만든것
+-> 강의자, 수강생 동일한 파일 세팅 가능
+
+고정ip 설정
+
+고정ip 확인 - ifconfig ens32
+
+gedit usr/lib/avahi/av ~~~~ -> AVAHI_DAEMON_DETECT_LOCAL - 0 변경 
+-> 네트워크 오류입니다 오류 자주뜨는것 안뜨게 수정
+gedit etc/default/avahi-daemon -> AVAHI_DAEMON_DETECT_LOCAL - 0 변경 
+-> 네트워크 오류입니다 오류 자주뜨는것 안뜨게 수정
+
+시스템설정 - 밝기와 잠금 - 화면끄기 하지않기, 잠그기 끔, 절전상태 복귀 암호 복귀 끔 - 화면 보호기 안뜨게 수정
+키보드 입력 수정 - 104키 삭제
+윈도우 + 스페이스 - 한/영 전환
+
+vi에디터 - 다시 설치 - apt-get -y install vim
+-> 앞에 update를 제대로 해야 설치가 된다.
+
+방화벽 활성화
+->ufw enable
+
+halt -p
+-> 컴퓨터 종료
+
+------------->스냅숏 저장
+
+--------------------
+
+Server_B 설치 ( 서버버전, 텍스트모드 )
+
+초반 설정 너무 많음..
+
+cd /etc/apt 이동 후 sources.list -> sources.list.bak
+wget http://download.hanbit.co.kr/ubuntu/16.04/sources.list
+-> 권한문제로 안되므로 나중에 실행 
+-> update
+
+
+/etc/network interfaces 수정
+dhcp -> static
+ip 입력
+
+sudo su - root -> root 계정 생성
+
+재부팅 후 ip 확인
+
+스냅샷 등록
+
+
+--------------------
+
+client
+
+설치 후 재부팅 
+
+[sda] Assuming drive cache: write through 여기서 멈추면 재부팅
+
+디스플레이
+터미널 아이콘 바탕화면 이동
+소프트웨어 업데이트 - 설정 - 업데이트 해제
+
+sources.list 바꾸고 업데이트
+- 16.04 의 출시된 시기의 원본파일만 설정이 되도록함
+
+화면보호기 끄기
+
+한글 삭제 후 추가
+
+재부팅
+
+vi에디터 - 다시 설치 - apt-get -y install vim
+
+* 클라이언트는 자동ip이기때문에 설정안함
+스냅샷 설정
+
+--------------------
+WinClient
+
+WinUser
+vmware 하드분리 툴 설치
+화면보호기 끄기
+해상도 변경
+재부팅
+cd제거/스냅샷
+--------------------
+
+4-1
+
+리눅스는 대,소문자 다 가림
+
+리눅스 주요 명령어
+
+시스템 종료 - poweroff, showdown -P now, halt -p, init 0
+	   - shutdown -h 5 -> 5분 후 컴퓨터 종료
+	   - shutdown -c -> 시간제한 걸린 컴퓨터 
+종료 명령어 해제
+ - 시스템종료 명령어는 모든 가상윈도우 알림이 나옴
+ - shutdown -k -> 가짜로 꺼진다는 알림만 표출
+
+시스템 재부팅 - shutdown -r now, reboot, init 6
+로그아웃 - 컴퓨터 종료x 당사자만 빠져나갈 때
+			  - logout, exit
+가상콘솔 - 가상의 모니터 - 우분투는 총 7개 제공
+				- Ctrl + Alt + F1 ~ F7 - (F7은 X윈도우 모드)
+				-> 멀티유저 환경 테스트
+
+
+init 런레벨 - 0 - 종료 - Power off
+	  - 1 - 시스템 복구 - Recue
+	  - 2 - Multi-User - 안씀
+	  - 3 - Multi-User
+	  - 4 - Multi-User - 안씀
+	  - 5 - Graphical
+	  - 6 - Reboot 
+	   - /lib/systemd/system 디렉토리의 runlevel?.target 파일에 정리되어있음 -> 해당 모드 수정시 부팅할때 모드가 결정됨
+
+cd - 디렉토리 이동 명령어 - 현재 사용자의 디렉토리
+ls - 현재 디렉토리 파일 표출 명령어 - -l
+   - -a - 숨긴파일까지
+자동완성 명령어 - 일부만 입력 후 Tab키를 눌러 나머지 파일명을 자동으로 완성하는 기능.
+			 - 중복되는 파일이 있을경우 한번 더 누를경우 명단 보여줌
+도스키 - 상/하 화살표를 이용하여 다시 명령어를 나타내는 기능
+history - 여태까지 썻던 명령어 다 나옴
+		 - 삭제 - -c
+clear   - 화면 깨끗하게 삭제
+pwd - 현재 디렉토리 표출
+cat 파일명 - 파일의 내용을 화면에 표출
+
+
+4-2
+
+에디터 사용
+
+gedit - x윈도우 에디터 열기
+
+
+
+vi - vi 에디터 열기
+   - :q 나가기
+   - 파일명 -> 명령모드 -> i or a - 입력모드 - esc 명령모드 돌아가기
+   :        - 라인 명령모드 - 저장(w),나가기(q)
+
+
+vi - 비정상 종료시 - 스왑파일 - 숨긴파일에 파일명.swp파일 지우면 됨
+rm - 파일 삭제 - -f
+
+h,j,k,l - 명령모드에서 방향키 이동
+x       - 한글자 지우기
+yy      - 줄 복사
+p        - 붙여넣기
+dd      - 줄 지우기 - 4 dd - 4줄 지우기
+:set number - 행번호 표출
+man 명령어 - 명령어 도움말
+
+mount - 현재 연결된 장치 목록
+umount 경로 - 현재 연결된 장치를 끊어라 
+
+usb마운트 사용
+
+cp - 파일 복사 - .현재 디렉토리
+
+그래픽모드는 자동마운트가 되나, 텍스트모드는 자동마운트가 되지않는다.
+
+mkdir - 폴더 만들기
+
+dpkg --get-selections genisoimage -> genisoimage 명령어가 설치가되었는가 되었다면 해당 명령어 사용이 가능하다
+genisoimage -r -J -o boot.iso /boot -> /boot경로에 있는 모든파일을 boot.iso로 만든다
+mount -o loop - iso 사용하기위해선 써야한다.
+---> 많은파일을 전달할 경우에 유용함
+
+ls - 현재 폴더의 디렉토리 - -l - 자세하게 보자
+				- 파일은 제일앞에 -
+				- 디렉토리는 제일앞에 d
+				- -a - 숨긴파일도 보기 - .으로시작하는것들은 숨긴파일
+				- -al - 숨긴파일 포함 자세하게 보자
+
+cd - 현재 사용자의 홈 디렉토리 - 
+
+pwd - 현재 작업 디렉토리
+
+touch - 비어있는 파일을 만드는 명령어
+		- 기존파일에 쓰면 생성시간을 최근시간으로 바꿈
+
+rm - 디렉토리 삭제 명령어
+	- -f 기본 포함
+	- -i 삭제할지 물어봄
+
+cp - 파일복사 명령어
+
+mv - 파일 이동 명령어
+	 - 파일 이름 변경 명령어
+
+mkdir - 디렉토리 생성 명령어 - 2개이상 만들때는 -p 붙여야함
+rmdir - 디렉토리 삭제 명령어 
+	   - 해당 디렉토리 하위가 없으면 지움
+	   - r 하위 디렉토리 있어도 다 지우게 함
+cat 파일명 - 파일명에 해당하는 내용물을 화면에 출력하는 명령어
+head 파일명 - 파일명에 해당하는 내용물을 처음 5줄만 출력하는 명령어
+tail 파일명 - 파일명에 해당하는 내용물을 마지막 5줄만 출력하는 명령어
+	  - -3 3줄( head 동일 )
+
+more 파일명 - 파일 내용물이 길때 앞장, 뒷장,나가기 등 기능 지원
+		- 앞장 b, 뒷장 스페이스바, 나가기 q
+less 파일명 - 파일 내용물이 길때 한번에 보여주나, 위아래 그냥 이동가능
+file 파일명 - 파일명의 파일이 어떤파일인지 알려줌
+-> 리눅스는 확장자를 보여주지않기때문에, file명령어를 자주쓴다
+clear - 화면 깨끗하게 정리해주는 명령어
+
+--------------------
+
+사용자와 그룹
+
+모든 사용자는 /etc/passwd파일에 정의
+- 사용자이름:암호:사용자ID:사용자가소속된그룹ID:추가정보:홈 디렉토리:기본셸
+
+adduser - 새로운 사용자를 추가
+		   - uid : ID 지정, gid : 그룹 지정, home : 홈 디렉토리 지정, shell : 셸 지정
+passwd - 사용자의 비밀번호를 지정하거나 변경
+usermod - 사용자의 속성을 변경
+userdel - 사용자를 삭제
+		  - -r - 사용자의 홈 디렉토리까지 지울때
+chage - 사용자의 암호를 주기적으로 변경하도록 설정
+groups - 현재 사용자가 속한 그룹을 보여줌
+groupadd - 새로운 그룹을 생성
+groupmod - 그룹의 속성을 변경
+groupdel - 그룹을 삭제
+groupwd - 그룹의 암호를 설정하거나, 그룹의 관리를 수행
+
+* 1개의 사용자는 무조건 1개의 그룹에 들어간다.
+* userdel 그냥 사용시에는 홈 디렉토리는 남는다.
+* /etc/skel  -> 새로운 사용자 만들때마다 해당 디렉토리 목록들이 자동으로 유저의 디렉토리에 들어감
+
+
+파일괴 디렉토리의 소유와 허가권
+
+파일유형, 파일허가권, 링크수, 파일 소유자이름, 파일 소유그룹,파일크기, 마지막 변경/시간, 파일명
+1           , 9              , 1
+
+
+파일유형 - 일반적인 파일 -
+			- 디렉토리 d
+
+파일허가권 - 3개씩 끊어서 읽음
+	  - 소유자, 그룹, 그 외 사용자
+	  - rwx 순, 2진수로 표현 가능
+
+chmod - 파일 허가권 변경 명령어
+		 - ex) chmod 777 sample.txt
+
+파일 소유권(Ownership) - 파일이 누구껀지 
+
+chown/chgrp - 파일의 소유권을 바꾸는 명령어 - root만 사용할 수 있음.
+		 - chown ubuntu.ubuntu sample.txt 
+		 - chown ubuntu sample.txt 및 chgrp ubuntu sample.txt
+
+* 소유자 - ?,group - g, 일반사용자 - o
+* 프롬프트 # - root, $ - 일반사용자
+* su - 사용자 -> 사용자 변경
+
+
+링크
+하드링크 - inode1 블록 - 원본 파일 데이터
+			- ln
+심볼링 링크(소프트링크) - 윈도우 바로가기랑 비슷
+			  - inode2 블록 - 원본파일 포인터 - 원본파일
+			  - ln -s
+
+* ls - li - inode까지 자세히보이는 명령어
+
+--------------------
+
+프로그램 설치를 위한 dpkg
+
+dpkg(Debian Package)
+- Windows의 setup.exe와 비슷한 설치파일
+- 확장명은 *.deb,이를 패키지라고 부름.
+- 패키지이름 버전 개정번호 아키텍처.deb
+
+자주사용하는 dpkg 명령어
+설치 - dpkg -i  패키지이름
+삭제 - dpkg -r 패키지이름
+	  - dpkg -P 패키지이름 - 설정파일까지 삭제
+패키지 조회 - dpkg -l 패키지이름 - 설치된 패키지에 대한 정보를 보여줌
+		   	   - dpkg -L 패키지이름 - 패키지가 설치한 파일목록을 보여줌
+아직 설치되지않은 deb 파일 조회 - dpkg --info 패키지이름 - 패키지 파일에 대한 정보를 보여줌
+
+dpkg의 단점
+- A패키지가 설치되기 위해서 B패키지가 필요한 경우, dpkg명령으로는 해결이 까다로움
+- 이를 해결하기 위해 apt-get이 등장함
+
+apt-get
+- dpkg 명령의 캐피지 의존성 문제를 완벽하게 해결
+- apt-get install 패키지이름
+- -y는 모두 yes로 간주하고 설치 진행
+- 업데이트 - apt-get update
+- 삭제 - apt-get remove/purge 패키지이름
+- 사용하지않는 패키지 제거 - apt-get autoremove
+- 내려받은 파일 제거 - apt-get clean 또는 apt-get autoclean
+- 저장소의 URL은 /etc/apt/sources.list 파일
+
+apt-cache
+- 패키지를 설치하기 전에 패키지에 대한 정보나 의존성 문제를 미리 확인
+- 패키지 정보 보기 - apt-cache show 패키지이름
+- 패키지 의존성 확인 - apt-cache depends 패키지이름
+- 패키지 역의존성 확인 -apt-chache rdepends 패키지이름
+
+우분투 패키지 저장소
+main - 우분투에서 공식적으로 지원하는 무료 SW
+universe - 우분투에서 지원하지않는 무료 SW
+restricted - 우분투에서 공식적으로 지원하는 유료 SDW
+multiverse - 우분투에서 지원하지않는 유료 SW
+
+저장소가 기록된 파일
+- /etc/apt/sources.list파일
+- 형식 - dev 우분투_저장소_URL_버전_코드명저장소_종류
+
+-> upgrade는 source.list파일에
+	 1. 원본파일 패키지
+	 2. 원본파일 패키지 + updates 2줄로 적어야함
+
+--------------------
+
+파일 압축과 묶기
+
+파일 압축 
+- xz, bz2, gz, zip, Z 등
+- xz, bz2가 압축률이 더 좋아서, 최근에 자주 쓰임
+
+명령어
+xz - xz -d 파일명.xz
+bz2 - bzip2 -d 파일명.bz2
+gzip - gzip -d 파일명.gz
+zip/unzip - zip/unzip 파일명.zip
+-> zip은 윈도우와 호환성을 위할때 많이 쓰임
+
+파일 묶기
+- 리눅스에서는 파일 묶기와 파일 압축이 별도
+- 명령어는 tar이며, 확장명도 tar
+- 동작 : c(묶기), x(풀기), t(경로확인)
+- 옵션 : f(파일), v(과정보이기), J(tar+xz), z(tar+gzip), j(tar+bzip2)
+
+사용 예
+- tar cvf my.tar /etc/sysconfig/ -> 묶기
+- tar cvfJ my.tar.xz /etc/sysconfig/ /etc/sysconfig/ -> 묶기 + xz압축
+- tar xvf my.tar -> tar 풀기
+- tar xvfJ my.tar.xz /etc/sysconfig/ -> xz 압축 해제 + tar 풀기
+
+-> tar 자체에 압축기능이 있는것은 아니다, bz2등의 명령어 패키지가 깔려있어야한다.
+   연동해서 작동하는것 !
+
+--------------------
+
+파일 위치 검색
+
+find [경로][옵션][조건][action] : ㅣㄱ본파일 찾기
+사용 예
+- find /etc -name "*.conf" - 확장명 conf를 다 찾아라
+- find /bin -size +10k -size -100k - 10kb보다 이상 100kb보다 미만을 다 찾아라
+- find /home -name "*.swp" -exec rm {} \;
+  -> (확장명 swp를 다 찾아라) 그 후 -exec 사이에있는 것을 실행하라 \;
+  -> -exec 와 \;은 외부 명령어의 시작과 끝을 표시함
+
+which 실행파일이름 : path에 설정된 디렉터리만 검색
+whereis 실행파일이름 : 실행파일,소스,man페이지 파일까지 검색
+locate 파일이름 : 파일 목록 데이터베이스에서 검색
+
+--------------------
+
+시스템 설정
+
+다양한 환경 설정( unity-control-center ) - 윈도우 제어판과 비슷
+네트워크 설정( nmtui )
+방화벽 설정 ( ufw, gufw )
+서비스 설정 ( rcconf )
+
+apt-get -y install gufw pythton-gi
+apt-get -y install rcconf
+
+
+--------------------
+
+cron과 at
+
+cron
+- 주기적으로 반복되는 일을 자동적으로 실행될 수 있도록 설정
+- 관련된 데몬(서비스)은 "crond", 관련 파일은 "/etc/crontab"
+- /etc/crontab 형식
+ * 분 시 일 월 요일 사용자 실행명령
+ * 예) 00 05 1 * * root cp -r /home /backup - 매월 매요일 
+
+at
+- 일회성 작업을 예약
+- 사용 예
+ * 예약 : #at <시간>
+ * 예) # at 3:00am tomorrow -> 내일 새벽 3시
+		 # at now + 1 hours -> 1시간 후
+ * at> 프롬프트에 예약 명령어 입력 후 [Enter]
+ * 완료되면 [Ctrl] + [D]
+ * 확인 : #at - l
+ * 취소 #atrm <작업번호>
+
+* systemctl status [데몬(서비스)] - 해당 서비스가 현재 실행되고있는 상태인지 알수있다.
+-> cron 과 at은 서비스로 실행되는것이기 때문에 해당 서비스가 실행되고있는지 여부 확인을 반드시 해야한다.
+* systemctl restart - 서비스 재시작
+
+-> cron 명령어 파일을 만들면 서비스 재시작을 해야함!
+
+* date 011503002026
+-> 그 시점으로 날짜가 바뀐다
+-> 잘안되면 앞에 sudo 써서 해보자
+
+* apt-get -y install rdate at
+

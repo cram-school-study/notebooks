@@ -1,0 +1,14 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2020-08-20T09:00:48+09:00
+
+====== 목요일 20 8 2020 ======
+ncs
+프로그래밍 언어 활용 - 3-1 - 라이브러리
+
+파이썬
+
+wsl2
+
+자바
+

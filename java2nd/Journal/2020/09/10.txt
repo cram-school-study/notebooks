@@ -1,0 +1,14 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2020-09-10T13:51:17+09:00
+
+====== 10 ======
+Created 목요일 10 9월 2020
+
+오전 - 1차 프로젝트 다른사람들것 보기
+
+오후 - 깃허브 재공부
+
+pythonanywhere 
+-> 파이썬 웹 호스팅
+-> 계정 유지시 소량의 용량을 로그인시마다 1달씩 연장

@@ -1,0 +1,76 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2020-08-04T13:55:49+09:00
+
+====== git ======
+Created 화요일 04 8월 2020
+
+dos명령어
+
+cd / - 루트 디렉토리로 이동
+dir - 폴더의 목록을 보여준다
+dir [[/s]] - 폴더의 서브 폴더를 포함한 목록을 보여준다.
+dir [[/a]] - 숨긴파일 포함 목록을 보여준다.
+md - 폴더 생성(mkdir)
+rd - 폴더 삭제(rmdir)
+echo - 메시지 표시
+
+git
+1.해당 디렉토리 이동
+2. git init
+3. 파일 생성or변경
+4. git add 파일명
+   ↔git rm --cached 파일명, git unstaged 파일명 - add취소
+5. git status (add 현상황 확인)
+6. git commit -m "메시지" (커밋 현 상황 확인)
+  ↔ git reset HEAD~2 - 마지막 1번째,2번째 커밋 취소,
+	git reset soft 커밋번호 - statge 상태 commit 취소
+	git reset mixed 커밋번호 - unstage 상태 commit 취소
+	git reset hard 커밋번호 - unstage 상태 commit 취소, 파일 삭제
+
+7. git remote add origin 깃허브 주소 - 깃허브 연결(local 설정파일)
+8. git push -u origin master - 깃허브에 올리기 - -u는 다음부터 git push만 해도 origin master에 올리겠다는 예약어?
+9. git clone 깃허브주소
+10. git checkout -b feature_x - 다른 branch를 생성하고 그쪽으로 이동
+ ↔ git branch -d feautre_x - branch 삭제
+11. git pull - 깃 허브 -> 로컬 가져오기
+
+
+* gi clone 사용자명@호스트:/원격/서버/주소  - 안되는이유
+* checkout -b b뜻
+
+
+git bash 쉘 설정파일
+
+C:\Program Files\Git\etc\gitconfig -> system 구역 config 설정파일
+~/.gitconfig -> global 구역 config 설정파일
+
+[core]
+		editor = notepad 
+내용 추가시 edit시마다 메모장으로 열림
+[alias]
+		lo = log --all --decorate --oneline --graph
+해당 명령어를 함축하여 사용 가능
+D:\jeongwj\myrepo\.git\config -> local 구역 config  설정파일 (git 허브 연결 설정 가능)
+
+윈도우 자동 로그인 깃허브 계정 삭제
+자격 증명 관리자 - windows 자격 증명 - 깃허브 계정 삭제
+
+--------------------
+
+깃 받기
+git clone 주소
+
+원격 브랜치 확인
+git branch -r
+
+원격 브랜치 가져오기
+git checkout -b [생성할 branch 이름] [원격 저장소의 branch 이름]
+git checkout -b jhl origin/jhl
+
+깃 덮어쓰기
+git fetch --all 
+git reset --hard origin/master
+
+머지 하기
+git merge [브런치 이름]

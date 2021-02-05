@@ -1,0 +1,7 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2020-11-26T08:53:18+09:00
+
+====== 26 ======
+Created 목요일 26 11월 2020
+

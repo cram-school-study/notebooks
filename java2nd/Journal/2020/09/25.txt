@@ -1,0 +1,132 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2020-09-25T09:31:59+09:00
+
+====== 25 ======
+Created 금요일 25 9월 2020
+
+자바스크립트
+
+// 객체가 특정 생성자 함수의 인스턴스인지 확인하기
+var CustCunst = function() { this.foo = 'bar' }
+undefined
+undefined
+var inst = new CustCunst()
+undefined
+inst
+CustCunst {foo: "bar"}
+inst instanceof CustCunst
+true
+if (inst instanceof CustCunst) {
+	console.log("참입니다.")
+}
+VM752:2 참입니다.
+undefined
+
+// 생성자를 통해 만든 인스턴스에 속성 추가
+undefined
+var myArray = new Array()
+undefined
+myArray.prop = 'test'
+"test"
+myArray.prop
+"test"
+myArray.age = 22
+22
+myArray
+[prop: "test", age: 22]
+
+// Object() 객체
+undefined
+// Object() 생성자 함수가 생성한 빈 객체 컨테이너를 Object() 객체라고 한다.
+undefined
+// 자바스크립트 객체
+undefined
+// 자바스크립트의 모든 객체
+undefined
+var obj = new Object()
+undefined
+obj
+{}
+obj.myFn = function() { return 'hiho' }
+ƒ () { return 'hiho' }
+obj.myArr = [1,2,4]
+(3) [1, 2, 4]
+obj.myDate = new Date()
+Fri Sep 25 2020 10:13:24 GMT+0900 (대한민국 표준시)
+obj.myName = 'Shin'
+"Shin"
+obj
+{myFn: Array(3), myDate: Fri Sep 25 2020 10:13:24 GMT+0900 (대한민국 표준시), myName: "Shin"}
+obj.myFn = function() { return 'hiho' }
+ƒ () { return 'hiho' }
+
+// 복합객체
+var obj = {
+	obj_1: {
+		obj_1_1: { foo:'bar' },
+		obj_1_2: {},
+	},
+	obj_2: {
+		obj_2_1: {},
+		obj_2_2: {},
+	}
+}
+undefined
+var ojb7 = {}
+undefined
+var obj_o = new Object()
+undefined
+
+// 점 표기법 각괄호 표기법을 사용한 객체 속성 접근
+undefined
+var cody = {}
+undefined
+cody.living = true
+true
+cody.age = 33
+33
+cody.living
+true
+cody['living']
+true
+cody.age
+33
+cody['age']
+33
+a = 'age'
+"age"
+cody[a]
+33
+delete cody.age
+true
+cody.age
+undefined
+
+var myArray = []
+undefined
+myArray.__proto__
+[constructor: ƒ, concat: ƒ, copyWithin: ƒ, fill: ƒ, find: ƒ, …]
+myArray.abc
+undefined
+myArray.__proto__.abc
+undefined
+myArray.__proto__.__proto__.abc
+undefined
+myArray.__proto__.__proto__.
+abc
+undefined
+
+--------------------
+
+마리아 db
+
+show databases;
+use mysql;
+show tables;
+describe user;
+slelect Host, User, from user;
+
+
+
+

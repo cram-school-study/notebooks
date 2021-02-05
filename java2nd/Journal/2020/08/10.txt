@@ -1,0 +1,24 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2020-08-10T09:14:47+09:00
+
+====== 월요일 10 8 2020 ======
+
+ncs
+애플리케이션 설계
+타 시스템 연동 설계하기
+
+파이썬
+파이썬 gui
+
+venv\Scripts\activate.bat - cmd 상에서 가상환경 실행
+pip install PyQt4-4.11.4-cp35-cp35m-win32.whl - 설치 실행
+
+gui - pyqt5
+창 띄우기
+어플리케이션 아이콘 넣기
+창 닫기
+
+과일가게 - 윈도우창으로 만들어보기
+
+2차 회의

@@ -1,0 +1,9 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2020-11-13T09:03:57+09:00
+
+====== 13 ======
+Created 금요일 13 11월 2020
+
+로지스틱 회귀
+python fit 함수

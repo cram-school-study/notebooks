@@ -1,0 +1,24 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2020-10-21T15:58:49+09:00
+
+====== 21 ======
+Created 수요일 21 10월 2020
+
+wsl.exe -l -v  
+- ubuntu 20 18은 상관없으나 마지막 version은 2이어야함
+
+cd ~
+mkdir test
+
+python3 -m venv venv
+source vevn/bin/acrtivate
+pip list
+->pip error 뜨면 pip install --upgrade pip seruptools
+pip install flask
+
+code .
+-> visual studio code 다운/실행
+커맨드 팔레트 - python: select interp interpreter
+
+python -m flask run

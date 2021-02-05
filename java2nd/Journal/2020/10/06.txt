@@ -1,0 +1,8 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2020-10-06T09:08:33+09:00
+
+====== 06 ======
+Created 화요일 06 10월 2020
+
+GET, POST 방식

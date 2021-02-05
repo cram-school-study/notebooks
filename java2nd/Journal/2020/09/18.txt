@@ -1,0 +1,41 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2020-09-18T09:10:33+09:00
+
+====== 금요일 18 9 2020 ======
+
+NCS
+
+2-2 관계형 데이터베이스 활용
+
+aquerytool.com
+
+--------------------
+
+CSS
+
+h1 { color: red; }
+
+셀렉터 { 프로퍼티1 : 값1; 프로퍼티2 : 값2 }
+- 선언 블록 - 프로퍼티1: 값1; 프로퍼티2 : 값2
+- 선언 - 프로퍼티1 :값 
+
+
+css 적용 우선순위
+
+1. id - 중복 불가능
+2. class - 중복 가능
+
+codepen.io
+
+--------------------
+
+파이썬 서버
+
+http 프로토콜시 응답 메시지 목록
+https://developer.mozilla.org/ko/docs/Web/HTTP/Status
+
+localhost 서버 구성 및 css
+
+emmet -> html 노가다 간단 작성방법
+

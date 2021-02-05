@@ -1,0 +1,18 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2020-09-18T16:50:31+09:00
+
+====== 화요일 15 9 2020 ======
+
+우분투 - [Ctrl] + z -> 대기상태로 추후 멀티작업 용이
+
+jobs -> 멀티작업 번호 출력
+
+fg job번호 -> 해당 대기상태 작업으로 이동
+
+우분투 프로세스 목록 보기 - ps
+프로세스 죽이기 - kill -9 PID
+
+apt-get -y install 패키지이름 - 해당 패키지 다운로드
+
+파일명 변경 - mv 파일명 바꿀파일명

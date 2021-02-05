@@ -1,0 +1,36 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2020-10-07T09:28:03+09:00
+
+====== 07 ======
+Created 수요일 07 10월 2020
+
+회원가입 유효성 검사
+
+ajax
+
+[[XMLHttpRequest]] Object Methods
+
+new XMLHttpRequest()  
+abort()
+getAllResponseHeaders()
+getResponseHeader()
+open(method, url, async, user, psw), open(method, url, async)
+send()
+send(string)
+setRequestHeader()
+
+[[XMLHttpRequest]] Object Properties
+
+onreadystatechange - 속성값이 바뀔때마다 호출
+readyState
+responseText
+responseXML
+status
+statusText
+
+
+GET이 간단고 빠르지만 POST를 더 많이 쓴다
+1. 캐시파일이 없다 (파일 or 서버에 있는 데이터베이스 업데이트 시)
+2. 서버로 많은 양을 보낼 수 있다. (POST는 길이 제한이 없다.)
+3. 유저가 넣은 것을 보낼때 더 건장?하고 안전하다.

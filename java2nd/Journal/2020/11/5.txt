@@ -1,0 +1,29 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2020-11-05T10:15:23+09:00
+
+====== 5 ======
+Created 목요일 05 11월 2020
+
+vmware 자체 포트포워딩 방법
+
+C:\ProgramData\VMware\vmnetnat.conf
+
+ubuntu - 스냅으로 설치되면 한글이 사용 안되는 경우가 많음.
+docker-compose - 버전이 낮음
+https://docs.docker.com/compose/install/ - 설치
+
+빌드 - docker build -t flask-started.
+
+컴포즈
+docker-compse up -d
+
+—
+git 서버 만들기 시작
+
+1. 클라이언트에서 ssh 키 생성 - ssh-keygen - home/.ssh 경로에 생성
+
+--------------------
+
+linux 에서는 set 명령어 x
+export 명령어

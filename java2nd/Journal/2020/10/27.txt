@@ -1,0 +1,86 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2020-10-27T10:41:15+09:00
+
+====== 27 ======
+Created 화요일 27 10월 2020
+1. PK 3개 거는법
+2. 파일 업로드 - 사용자단 업로드 
+				   - 운영단 업로드 경로 구분 
+ -> static 경로 외로는 왜 못불러오는지 이유를 못찾겠다
+
+3. DB 설정 FK 걸려있을시에 부모것이 삭제되었을경우 자식것도 삭제되도록 설정하는 것
+ALTER TABLE COMMENT 
+ADD CONSTRAINT POST_DELETE 
+FOREIGN KEY (POST_NUMBER)
+REFERENCES POST(NUMBER)
+ON DELETE CASCADE
+
+4.
+library
+
+소개 이미지 100x100
+소개 글 256 글자정도
+포팅 후 호스팅 url
+
+이번주까지 제출
+
+
+강사님이 따로 홈페이지 만들어서
+
+저희쪽으로 팀별로  링크를 걸것이기 때문에
+
+5.
+DB 책정도 INSERT
+
+- ok
+
+
+6. 수정된것 파일들 적용
+-> book_upload.css 적용 후 master/books.html페이지css 호출 books말고 book_upload로 바꾸기
+-> game화면 base.html로 따라가게 수정 후 확인
+-> books 페이지 페이징 수정 후 적용
+
+6-1. master/books.html <link rel="stylesheet" href="../static/css/books.css">
+	<link rel="stylesheet" href="../static/css/books_upload.css"> 수정
+6-2. static/css에 book_upload.css 넣기
+6-3. game/game.html  <- base.html 타도록 수정
+6-4. books.html paging 삭제
+
+			  <div class=paging>
+				{{ paging | safe }}
+			  </div>
+
+css
+
+.paging {
+	text-align: center;
+}
+
+
+
+main.py
+	page_number = request.args.get("page_number")
+	view_count = 10
+
+		if page_number is not None and page_number != "1":
+			page_number = int(page_number)
+			sql2 += "LIMIT {0}, {1} ".format(page_number * view_count, view_count)
+		else:
+			sql2 += "LIMIT  0, {0} ".format(view_count)
+			page_number = 1
+
+		print(sql)
+
+		paging = ""
+		if page_number != 1:
+			paging += "<a href='/books?page_number={0}".format((page_number - 1))
+			if title is not None:
+				paging += "&title={0}'> < </a>".format(title)
+			else:
+				paging += "'> < </a>".format(title)
+
+		paging += "<a>{0}</a>".format(page_number)
+		paging += "<a href='/books?page_number={0}".format((page_number + 1))
+
+, paging=paging

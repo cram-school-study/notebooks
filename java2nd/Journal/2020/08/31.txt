@@ -1,0 +1,161 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2020-08-31T12:05:34+09:00
+
+====== 31 ======
+Created 월요일 31 8월 2020
+
+리눅스 - 우분투 - 개인공부
+
+우분투 vs 센트os 차이점
+- 리눅스를 사용하는 os
+- 우분투가 무겁고, 센트os는 가벼워서 가벼운 웹서비스 포팅같은것들은 센트os를 주로 사용하고, 약간 무거운 것들은 우분투가 대세
+- 두종류 다 많이 사용하며, 사용방법은 많이 비슷하니 초반에 공부할때는 둘 중에 아무거나 해도 되고, 좀 무겁다는 우분투로 공부 시작.
+- 우분투, 센트os, 레드햇 등의 종류가 있는데 레드햇은 요즘에 잘 안쓰는거 같음
+( 12년도에는 레드햇 주로 썻다고 들은거 같은데??? )
+
+가상머신 설치 - 호스트 os
+					 - 게스트 os 구분됨.
+				 - 리눅스 64 bit 3대, 윈도우 10 32 bit - 설치
+				
+스냅숏 - 윈도우 시점 복원
+Suspend - 이어하기( 게스트os 유지상태로 vmware만 종료 ) - 이 상태로는 하드웨어 추가/제거 불가능
+
+--------------------
+vm 호스트 os - 111.1 ( 게이트웨이 111단 )
+게이트웨이 겸 DNS서버 - 2
+서버 1 - 고정 ip - 100
+서버 2 - 고정 ip - 200
+dhcp 서버 - 254
+클라이언트 - 유동 ip ( DHCP )
+win클라이언트 - 유동 ip ( DHCP )
+
+-> 인터넷 -               공유기              -   vm 호스트 os  (192.168.111.1)   -    vm 가상화 머신들
+				  (게이트웨이 192.168.0.1) - (게이트웨이 - 192.168.111.2 )      -    (192.168.111.~~~~ )
+
+-> 홈네트워크 VM ware구조 ( 공유기 - vm 가상 호스트 os의 2중 게이트웨이 구조)
+--------------------
+
+GNU 프로젝트
+GPL
+
+우분투 - 우분투 데스크톱 - gui 제공 (XWindow)
+		   - 우분투 서버       - gui 미제공
+
+
+Server 설치 (데스크탑 모드 gui 포함)
+--------------------
+
+ubuntu 사용자 - ubuntu/ubuntu
+루트 사용자 - password
+
+설정 1. 해상도 변경
+	   2. sudo su - root - 루트 사용자 접속
+	   3. passwd - 루트사용자 비밀번호 입력 - password
+	   4. 계정 잠금해제
+	   5. 자동로그인 켬 설정
+	   6. 업데이트 끄기
+
+gedit [[/etc/lightdm/lightdm.conf]] - ubuntu -> root
+gedit [[/root/.profile]] - 제일 아랫줄 # 으로 주석
+reboot - 재부팅
+
+[[/etc/apt/sources.list]] -> 강의자가 편집해서 따로 파일 올려놓은거 받기위해 기존 파일 .bak으로 이름변경 후
+wget 다운로드 주소 - 해당 주소의 파일 다운로드 받음
+
+wget http://download.hanbit.co.kr/ubuntu/16.04/sources.list
+-> 위 이름 변경 후 강의자가 편집해 놓은것 받음 (4장 내용)
+apt-get update -> sources.list 업데이트 -> 강의자가 우분투가 따로 업데이트되더라도 0.4버전으로 돌리기위해 만든것
+-> 강의자, 수강생 동일한 파일 세팅 가능
+
+고정ip 설정
+
+고정ip 확인 - ifconfig ens32
+
+gedit usr/lib/avahi/av ~~~~ -> AVAHI_DAEMON_DETECT_LOCAL - 0 변경 
+-> 네트워크 오류입니다 오류 자주뜨는것 안뜨게 수정
+gedit etc/default/avahi-daemon -> AVAHI_DAEMON_DETECT_LOCAL - 0 변경 
+-> 네트워크 오류입니다 오류 자주뜨는것 안뜨게 수정
+
+시스템설정 - 밝기와 잠금 - 화면끄기 하지않기, 잠그기 끔, 절전상태 복귀 암호 복귀 끔 - 화면 보호기 안뜨게 수정
+키보드 입력 수정 - 104키 삭제
+윈도우 + 스페이스 - 한/영 전환
+
+vi에디터 - 다시 설치 - apt-get -y install vim
+-> 앞에 update를 제대로 해야 설치가 된다.
+
+방화벽 활성화
+->ufw enable
+
+halt -p
+-> 컴퓨터 종료
+
+------------->스냅숏 저장
+
+--------------------
+
+Server_B 설치 ( 서버버전, 텍스트모드 )
+
+초반 설정 너무 많음..
+
+cd [[/etc/apt]] 이동 후 sources.list -> sources.list.bak
+wget http://download.hanbit.co.kr/ubuntu/16.04/sources.list
+-> 권한문제로 안되므로 나중에 실행 
+-> update
+
+
+[[/etc/network]] interfaces 수정
+dhcp -> static
+ip 입력
+
+sudo su - root -> root 계정 생성
+
+재부팅 후 ip 확인
+
+스냅샷 등록
+
+
+--------------------
+
+client
+
+설치 후 재부팅 
+
+[sda] Assuming drive cache: write through 여기서 멈추면 재부팅
+
+디스플레이
+터미널 아이콘 바탕화면 이동
+소프트웨어 업데이트 - 설정 - 업데이트 해제
+
+sources.list 바꾸고 업데이트
+- 16.04 의 출시된 시기의 원본파일만 설정이 되도록함
+
+화면보호기 끄기
+
+한글 삭제 후 추가
+
+재부팅
+
+vi에디터 - 다시 설치 - apt-get -y install vim
+
+* 클라이언트는 자동ip이기때문에 설정안함
+스냅샷 설정
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+궁금점 1. VM은 호스트, 게이트웨이 왜 다르고, 공유기는 동일 설정? 찾아봅세
+

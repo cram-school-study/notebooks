@@ -1,0 +1,37 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2020-07-21T09:23:46+09:00
+
+====== 월요일 20 7 2020 ======
+
+윈도우 개인 계정 만들기
+윈도우 개인 계정 다운로드 바탕화면 경로 설정
+윈도우 개인 계정 관리자 변경
+크롬 설치
+탐색기 확장자명 보이게 설정
+숨긴파일 보이게 설정
+
+
+
+파이썬 설치 - 파이썬 경로 설정 여부 확인
+			   - 파이썬 설치경로 별도 경로 설정 ( 버전별 관리)
+for문, if문, 대입연산자, 사칙연산
+
+
+
+git bash 쉘 설정파일
+
+C:\Program Files\Git\etc\gitconfig -> system 구역 config 설정파일
+~/.gitconfig -> global 구역 config 설정파일
+
+[core]
+		editor = notepad 내용 추가시 edit시마다 메모장으로 열림
+
+D:\jeongwj\myrepo\.git\config -> local 구역 config  설정파일 (git 허브 연결 설정 가능)
+
+
+
+점프투파이썬, ncs, 파이썬 튜터
+NumPy(넘파이) - 파이썬에서 수학,과학 연산에 쓰는 파이썬 패키지.
+피클 -  파이썬에서 사용하는 자료를 변형없이 그대로 파일에 저장하고, 불러오는 일을 한다.
+	   - 텍스트 외의 자료형을 저장하기 위해 사용.

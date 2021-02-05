@@ -1,0 +1,98 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2020-11-10T09:29:53+09:00
+
+====== 12 ======
+Created 화요일 10 11월 2020
+
+
+
+카멜
+스네이크
+
+파이썬 함수 목록
+upper() - 모든 글자를 대문자로 변환
+capitalize() - 첫번째 글자를 대문자로 변환
+title() - 알파벳 외의 문자(숫자,특수기호,띄어쓰기 등)로 나눠져있는 영단어들의 첫 글자를 대문자로 변환
+lower() - 모든 글자를 소문자로 변경
+isupper() - 모든 문자가 대문자인지 확인 - True/False
+islower() - 모든 문자가 소문자인지 확인 - True/False
+
+find() - 문자열중에 특정문자를 찾고 위치 반환, 없을경우 -1
+startswith(시작하는문자, 시작지점) - 특정문자로 문자열이 시작하는지 여부를 알려줌
+													- true, false 반환
+endwith(끝나는문자, 문자열의 시작, 문자열의 끝) - 특정문자로 끝나는지 여부를 알려줌
+																		  - true, false 반환
+
+replace() - (치환할 문자,치환될 문자) 
+
+runtime stack
+nonlocal - 한단계 위 변수 지정
+
+런타임 - 에러부분, 
+일반상황 -에러아닌부분 ??
+
+리저브드방식 (reserved) - 파라미터 default 값 설정
+		   		- default 방식
+				 		  - 앞부분에 default 값 설정시 에러남, 뒷부분부터 해야함
+
+
+positional 방식 - parmeter (arguments)  - 순서에따라 메서드의 값들을 부르는것
+keyword 방식 - parmeter  - 이름을 지정하여 메서드의 값들을 부르는것
+* 섞어서 쓸시에는 해당 자리에만 사용이 가능하여 positional 방식에
+ 이름을 쓰는것과 동일하기때문에 주석과 같이 표시용도
+
+dir 명령어
+
+파이썬은 __변수 값 가져올 수 있음
+
+
+*자바
+int i ;
+int j =i ;
+
+
+--------------------
+
+자바와 python의 차이점
+
+python
+
+class Account:
+	num_accounts = 0				— 클래스변수
+	def __init__(self, name):
+		self.name = name			  — 인스턴스 변수
+		Account.mnum_accounts += 1
+	def __del__(self):
+		Account.num_accounts -= 1
+		
+	@classmethod						— 클래스 메서드
+	def 메서드(cls, 매개변수1, 매개변수2) :
+		코드
+	def 메서드(매개변수1, 매개변수2):		— 인스턴스 메서드
+		코드
+
+Java
+
+class Account {
+	static int num_accounts = 0;			— 클래스변수
+	int num_accounts1 = 0;				— 인스턴스 변수
+	
+	account() {}
+	static void 메서드(매개변수1, 매개변수 2) {		— 클래스 메서드
+		코드;
+	}
+	void 메서드(매개변수1, 매개변수2) {			— 인스턴스 메서드
+		코드;
+	}
+}
+
+
+궁금점
+* python에서는 static메서드와, class메서드가 다르다?? - 해당 어노테이션이 각각 존재 차이점 알아볼것!
+* self, cls의 차이점 - self는 인
+
+* 자바에서는 static메서드(클래스 메서드), 인스턴스 메서드 2종류? 파이썬은 3종류?
+
+
+

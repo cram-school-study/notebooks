@@ -1,0 +1,13 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2020-08-03T09:24:12+09:00
+
+====== ncs ======
+Created 월요일 03 8월 2020
+
+1. 정보능력
+2. 요구사항 확인
+3. 화면 설계
+4. 통합구현
+5. 애플리케이션 설계
+

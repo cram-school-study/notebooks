@@ -1,0 +1,45 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2020-10-13T13:54:14+09:00
+
+====== 13 ======
+Created 화요일 13 10월 2020
+
+hub.docker.com - docker 이미지 다운로드 사이트
+
+linux 환경에서 docker 설치
+curl -fsSL https://get.docker.com/ | sudo sh
+
+sudo 없이 사용하기 (사용자에게 docker 권한 주기)
+sudo usermod -aG docker $USER # 현재 접속중인 사용자에게 권한주기
+sudo usermod -aG docker your-user # your-user 사용자에게 권한주기 
+
+설치 확인하기
+docker version
+
+
+docker는 생성할때 포트포워딩 설정 한번 하고 끝.
+대신 만들어진것을 이미지로 구울수가 있다.
+
+1. 즉, 만들어진것 이미지 굽기
+2. 구운것 지우기
+3. 구운 이미지 생성하면서 포트포워딩 하기
+
+이 과정을 거쳐야 함.
+
+docker create --name ajaxtest -p 5000:5000(컨테이너포트:호스트포트) -it ubuntu
+docker attach ajaxtest
+docker images
+docker ps -a
+docker start
+docker stop
+
+docker rm [컨테이너id]
+docker rmi [이미지id]
+
+docker stop ajaxtest
+docker commit ajaxtest myubuntu
+docker create --name ajaxtest2 -p 5000:5000 -it myubuntu
+
+attch - 연결되어있는것을 그대로 연결 하는 것
+exec - 아예 새로운 창을 여는것

@@ -1,0 +1,27 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2020-09-22T12:10:59+09:00
+
+====== 22 ======
+Created 화요일 22 9월 2020
+
+윈도우 재설치
+
+--------------------
+
+micorosoft store
+- ubuntu 연결 등 여러가지 활용 가능
+
+Linux 파일서버 재 테스트
+
+파이썬
+Ctrl + Z -> 작업 숨기기
+Ctrl + C -> 작업 나가기
+jobs -> 작업 목록 보기
+kill %1 -> 해당 작업 죽이기
+
+--------------------
+
+
+CSS Navigation Bar
+CSS Responsive - 반응형 웹

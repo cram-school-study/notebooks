@@ -1,0 +1,31 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2020-10-15T15:37:13+09:00
+
+====== 15 ======
+Created 목요일 15 10월 2020
+
+javascript
+
+document.getElementsByTagName('태그명') = a
+document.createElement = b
+b.setAttributr("속성", "값")
+a[0].apeendChild(b)
+
+var 변수명1 = document.querySelector("form input[name='cmd']")
+cmd_input.value = "update"
+
+var mybutton = document.querySelector("form input")
+mybutton.innerText = "수정"
+
+var changvalue = prompt("수정내용을 입력해 주세요.")
+-> 팝업창으로 사용자의 입력 받을 수 있음(changvalue)
+
+--------------------
+
+<form>
+	<input>
+	<button></button>
+</form>
+
+--------------------

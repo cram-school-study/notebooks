@@ -1,0 +1,44 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2020-07-22T16:58:36+09:00
+
+====== 7월 2020 ======
+
+dos명령어
+
+cd / - 루트 디렉토리로 이동
+dir - 폴더의 목록을 보여준다
+dir [[/s]] - 폴더의 서브 폴더를 포함한 목록을 보여준다.
+dir [[/a]] - 숨긴파일 포함 목록을 보여준다.
+md - 폴더 생성(mkdir)
+rd - 폴더 삭제(rmdir)
+echo - 메시지 표시
+
+  
+git
+1.해당 디렉토리 이동
+2. git init
+3. 파일 생성or변경
+4. git add 파일명
+   ↔git rm --cached 파일명, git unstaged 파일명 - add취소
+5. git status (add 현상황 확인)
+6. git commit -m "메시지" (커밋 현 상황 확인)
+  ↔ git reset HEAD~2 - 마지막 1번째,2번째 커밋 취소,
+	git reset soft 커밋번호 - statge 상태 commit 취소
+	git reset mixed 커밋번호 - unstage 상태 commit 취소
+	git reset hard 커밋번호 - unstage 상태 commit 취소, 파일 삭제
+
+7. git remote add origin 깃허브 주소 - 깃허브 연결(local 설정파일)
+8. git push origin master - 깃허브에 올리기
+9. git clone 깃허브주소
+10. git checkout -b feature_x - 다른 branch를 생성하고 그쪽으로 이동
+ ↔ git branch -d feautre_x - branch 삭제
+11. git pull - 깃 허브 -> 로컬 가져오기
+
+
+* gi clone 사용자명@호스트:/원격/서버/주소  - 안되는이유
+* checkout -b b뜻
+
+
+python
+

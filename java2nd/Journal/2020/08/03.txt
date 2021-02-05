@@ -1,0 +1,23 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2020-08-03T09:24:35+09:00
+
+====== 월요일 03 8 2020 ======
+1. NCS
+
+카페24 설명
+- 웹 호스팅, 서버 호스팅 설명
+
+오븐 사이트 설명
+https://ovenapp.io/
+
+2.파이썬
+튜플 자료형
+딕셔너리 자료형
+불 자료형
+자료형의 값을 저장하는 공간,변수
+
+w3school 사이트 설명
+https://www.w3schools.com/
+
+'=' -> assignment, 대입연산자

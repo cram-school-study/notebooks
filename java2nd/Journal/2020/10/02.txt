@@ -1,0 +1,107 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2020-10-02T16:13:06+09:00
+
+====== 02 ======
+Created 금요일 02 10월 2020
+
+youtube 강의
+
+사이트
+can i use
+js bin
+color tool
+mdn
+css-tricks
+
+프레임워크
+post css - 지원안하게되는 구버전같은것을 대략적으로 지원해주는 프레임워크
+ts ->  타임스크립트?
+sass
+
+
+position
+
+기본 - static - 기본 설정
+	   - relative - 원래 있어야할 위치에서 옮겨간 것
+	   - absolute - 상위의 박스 기준
+	   - fixed - 상자안에서 완전히 벗어나서 윈도우 상에서 움직이는 것
+	 - sticky - static 위치 그대로 있는 대신 스크롤링해도 원래의 자리에 붙어있는 것.
+	
+float - left - 이미지와 글이 있을경우 이미지 left로 두면 오른쪽에 글이  쭈루룩
+	   - center 
+	   - right
+-> 목표는 위의 상황이었으나, 기존 flaxbox가 나오기전엔 레이아웃 구성이 힘들어서 위의 활용외에 사용하게 됨
+-> 잘못된것이라 flaxbox가 나온 후 부터는 float를 해당부분에만 활용하게 됨
+
+flaxbox
+
+1. container
+
+display - flex
+flex-direction - row, row-reverse, column, column-reverse
+flex-wrap - nowrap, wrap, wrap-reverse
+flex-flow - coulmn nowrap, 위 2개를 합친것
+justify-content - flex-start, flex-end, center, space-around, space-evenly, space-between - 중심축
+align-items - center, baseline  - 반대축
+align-content - flex-start, flex-end, center, space-around, space-evenly, space-between - 반대축
+
+
+2. item 
+
+order - 임의적으로 아이템 순서 배치
+flex-grow - 0, 1, ... -  width 늘어났을때 배치 비율
+flex-shrink - 0, 1, ... - width 줄어들었을때 배치 비율
+flex-basis - auto, 60%, ... - width 늘었을때, 줄었을때 배치 비율
+align-self - center, ... , 하나의 배치만 정렬
+
+3. axis
+- 중심축, 반대축
+
+main axis
+cross axis
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,15 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2020-08-19T14:10:58+09:00
+
+====== 수요일 19 8 2020 ======
+
+ncs
+
+깃허브
+
+발전편
+브랜치 pull fetch push
+팀단위 실습
+
+자바

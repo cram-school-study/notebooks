@@ -1,0 +1,31 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2020-10-03T15:21:06+09:00
+
+====== 03 ======
+Created 토요일 03 10월 2020
+
+div.container>div.item.item${$}*10
+visual code 익스텐션
+
+	1. Material theme - 배경색 설정
+	2. Material icon theme - 아이콘 설정
+	3. Prettier - 
+	4. bracket pair colorirzer - 괄호 가독성 높이기 위해 색 구분
+	5. Indent-rainbow - 앞부분 탭부분 색으로 구분 보여줌
+	6. Auto rename tag - HTML 편집시에 태그 앞부분만 바꿔줘도 뒷부분도 수정되게 해줌.
+	7. CSS PEEK - Ctrl + 클래스 클릭으로 css파일 부분으로 자동 이동
+	8. HTML CSS SUPPORT  - 자동완성 어느정도 보여줌
+	9. LIVE SERVER - html 페이지 저장만으로 자동으로 웹사이트 보여주는 것.
+	10. html to CSS autocompletion - CSS에서 HTML의 클래스명 등을 자동으로 읽어주는 익스텐션
+	11. Emmet - Tab키로 자동으로 어느정도 만들어주는 것.
+
+div>li>ol*2>a
+
+p.class${item $}*5
+
+p>lorem - 더미데이터
+
+
+font awesome
+google fonts

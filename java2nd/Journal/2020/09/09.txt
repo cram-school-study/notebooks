@@ -1,0 +1,14 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2020-09-09T11:23:05+09:00
+
+====== 09 ======
+Created 수요일 09 9월 2020
+
+
+Flask 
+- https://wikidocs.net/book/4542
+
+
+
+random_diece 끝!!! 마무으리!!!!

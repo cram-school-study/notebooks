@@ -1,0 +1,23 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2020-08-17T09:16:55+09:00
+
+====== 월요일 17 8 2020 ======
+
+취업하고 싶은 직업군으로 메일 보내기.
+
+과일가게 강사님 예제
+https://github.com/poby13/fruitshop
+
+강사님 블로그
+https://blog.jiktong.kr/
+
+과일가게 지점, 판매데이터 만들어지는것 제작해보기
+
+
+JAVA
+
+jdk 1.8 설치
+이클립스 최신판 설치
+변수 선언
+스코프

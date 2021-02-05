@@ -1,0 +1,36 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2020-09-07T16:45:42+09:00
+
+====== 07 ======
+Created 월요일 07 9월 2020
+
+random_dice 문서작업
+
+리눅스
+
+파일 압축 
+- xz, bz2, gz, zip, Z 등
+- xz, bz2가 압축률이 더 좋아서, 최근에 자주 쓰임
+
+명령어
+xz - xz -d 파일명.xz
+bz2 - bzip2 -d 파일명.bz2
+gzip - gzip -d 파일명.gz
+zip/unzip - zip/unzip 파일명.zip
+-> zip은 윈도우와 호환성을 위할때 많이 쓰임
+
+파일 묶기
+- 리눅스에서는 파일 묶기와 파일 압축이 별도
+- 명령어는 tar이며, 확장명도 tar
+- 동작 : c(묶기), x(풀기), t(경로확인)
+- 옵션 : f(파일), v(과정보이기), J(tar+xz), z(tar+gzip), j(tar+bzip2)
+
+사용 예
+- tar cvf my.tar [[/etc/sysconfig/]] -> 묶기
+- tar cvfJ my.tar.xz [[/etc/sysconfig/]] [[/etc/sysconfig/]] -> 묶기 + xz압축
+- tar xvf my.tar -> tar 풀기
+- tar xvfJ my.tar.xz [[/etc/sysconfig/]] -> xz 압축 해제 + tar 풀기
+
+-> tar 자체에 압축기능이 있는것은 아니다, bz2등의 명령어 패키지가 깔려있어야한다.
+   연동해서 작동하는것 !

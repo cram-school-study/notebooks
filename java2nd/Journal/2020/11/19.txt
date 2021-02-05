@@ -1,0 +1,16 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2020-11-19T11:07:58+09:00
+
+====== 19 ======
+Created 목요일 19 11월 2020
+
+Object 클래스
+hash function
+
+
+cloud 종류
+colab
+cloud gogle
+oracle cloud
+Backward compatibility - 과거버전이 최신버전에서도 실행되는가

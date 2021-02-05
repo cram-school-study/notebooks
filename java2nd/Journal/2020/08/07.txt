@@ -1,0 +1,14 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2020-08-07T14:14:47+09:00
+
+====== 금요일 07 8 2020 ======
+
+자율시간
+
+파이썬
+w3 - 리스트부터 딕셔너리 까지
+
+깃
+머지
+오토머지

@@ -1,0 +1,7 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2020-09-18T17:08:17+09:00
+
+====== 과목 ======
+Created 금요일 18 9월 2020
+

@@ -1,0 +1,17 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2020-10-05T09:11:21+09:00
+
+====== 05 ======
+Created 월요일 05 10월 2020
+
+DB JOIN
+
+INNER JOIN
+LEFT OUTER JOIN
+RIGHT OUTER JOIN
+
+
+google exction
+
+- color picker 툴

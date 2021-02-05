@@ -1,0 +1,21 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2020-11-17T08:55:30+09:00
+
+====== 17 ======
+Created 화요일 17 11월 2020
+
+python 오전 warming up 문제 풀어보기
+python 리마인드 - file 읽고 쓰기, for, 초기화
+자바 oop 리마인드 - ppt 한번 쭉 다시 읽어보기
+
+
+X마인드
+
+
+자바, 파이썬 목록 jupyter에 정리 
+ -> 목차별 나눠서 정리하기
+X마인드로 각각 목차 부분만 정리
+부록으로 각 언어별 오류 목록 적어두기
+
+pyqt5, qtinter

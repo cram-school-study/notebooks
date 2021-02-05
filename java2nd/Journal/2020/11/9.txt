@@ -1,0 +1,30 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.6
+Creation-Date: 2020-11-09T11:59:00+09:00
+
+====== 9 ======
+Created 월요일 09 11월 2020
+
+
+idus, TensorFlow
+
+스네이크 방식 - import시 _ 사용 o - function 정의
+카멜 방식 - import시 _ 사용x - 클래스 정의
+
+len(function) - return 파라미터 갯수
+
+import keyword
+= dir(keyword)
+
+print = 12345 
+* print는 키워드가 아니라 에러가 안남!
+* 키워드가 아닌 print, int등에 변수를 지정 후 해당 값을 다시 사용하고싶을 경우 del로 지워야함!
+* 실수 계산은 정확하게 계산하지않기때문에 range를 써야함
+* whos -> 현재 입력된 변수들 값과 목록
+* a,b = b,a -> 두 변수의 값을 교환할 수 있음, 파이썬만 가능
+* 기본 파이썬 or 자바 function, 람다식, for문
+* even = [i for i in range(100) if i%2 ==0]
+-> 짝수 1줄 
+
+* __iter__ -> 컨테이너로 던질 수 있다. 
+-> 아마도 해시에서 반복문에서 썻던게 이거 때문인듯??
